@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title2</title>
+</head>
+
+<body>
+    <input id="input" />
+    <button id="btn1">Ввести</button>
+    <script>
+        function dev(arr) {
+            let mean = arr.reduce((acc, curr) => {
+                return acc + curr
+            }, 0) / arr.length;
+
+            arr = arr.map((k) => {
+                return (k - mean) ** 2
+            })
+
+            let sum = arr.reduce((acc, curr) => acc + curr, 0);
+
+            let variance = sum / arr.length
+
+            return Math.sqrt(sum / arr.length)
+        }
+        const btn1 = document.getElementById("btn1");
+        const input = document.getElementById("input");
+        let sum = 0;
+        btn1.onclick = function () {
+            const inputValue = input.value;
+            const mass = inputValue.split(',').map(el => {
+                let n = Number(el);
+                return n === 0 ? n : n || el;
+            });
+            console.log(`Результат выражения равен ${dev(mass)}`)
+        }
+
+    </script>
+</body>
+
+</html>
